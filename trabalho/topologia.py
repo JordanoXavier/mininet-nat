@@ -4,6 +4,7 @@ from mininet.topo import Topo
 from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
+from scapy.all import *
 
 class BasicTopo(Topo):
     def build(self, **_opts):
@@ -27,6 +28,9 @@ class BasicTopo(Topo):
     
 def run():
     "Trabalho 2: NAT"
+    
+    nat_process = Popen(["python", "nat.py"]) # Inicia a função NAT em segundo plano no roteador
+
     net = Mininet(topo=BasicTopo(), controller=None)
     net.get('server1').cmd('iperf -s -p 8888 &')
     net.get('server2').cmd('iperf -s -u -p 8844 &')
@@ -37,6 +41,8 @@ def run():
     net.start()
     CLI(net)
     net.stop()
+
+    nat_process.kill() # Encerra a função NAT quando o Mininet for encerrado
 
 if __name__ == '__main__':
     setLogLevel( 'info' )
