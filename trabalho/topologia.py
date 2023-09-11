@@ -5,8 +5,6 @@ from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
 
-# Arquivo base para o trabalho 2
-
 class BasicTopo(Topo):
     def build(self, **_opts):
         sw1 = self.addSwitch('sw1', cls=OVSBridge)
