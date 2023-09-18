@@ -5,7 +5,7 @@ from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
 
-# Arquivo base para o trabalho 2
+# Arquivo base para o trabalho 1
 
 class BasicTopo(Topo):
     def build(self, **_opts):
@@ -28,7 +28,7 @@ class BasicTopo(Topo):
         self.addLink(sw2, router, intfName2='r-eth1', params2={'ip':'8.8.254.254/16'})
     
 def run():
-    "Trabalho 2: NAT"
+    "Trabalho 1: NAT"
     net = Mininet(topo=BasicTopo(), controller=None)
     net.get('server1').cmd('iperf -s -p 8888 &')
     net.get('server2').cmd('iperf -s -u -p 8844 &')

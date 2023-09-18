@@ -27,7 +27,7 @@ class BasicTopo(Topo):
         self.addLink(sw2, router, intfName2='r-eth1', params2={'ip':'8.8.254.254/16'})
     
 def run():
-    "Trabalho 2: NAT"
+    "Trabalho 1: NAT"
     
     nat_process = Popen(["python", "nat.py"]) # Inicia a função NAT em segundo plano no roteador
 
