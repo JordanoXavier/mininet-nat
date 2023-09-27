@@ -16,11 +16,11 @@ def nat(pkt):
         pkt[IP].src = translated_src_ip
         
         # Encaminha o pacote para a interface de saida apropriada
-        if pkt.sniffed_on == 'r-eth1':
-            sendp(pkt, iface='r-eth2')
-        elif pkt.sniffed_on == 'r-eth2':
+        if pkt.sniffed_on == 'r-eth0':
             sendp(pkt, iface='r-eth1')
+        elif pkt.sniffed_on == 'r-eth1':
+            sendp(pkt, iface='r-eth0')
     else:
         return
 
-sniff(iface=["r-eth1", "r-eth2"], filter='ip', prn=nat)
+sniff(iface=["r-eth0", "r-eth1"], filter='ip', prn=nat)
