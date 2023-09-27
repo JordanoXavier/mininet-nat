@@ -2,7 +2,8 @@ from scapy.all import *
 
 # Tabela de Traducao NAT (IP privado -> IP publico)
 nat_translation_table = {
-    '10.1.1.1': '8.8.254.254',  
+    '10.1.1.1': '8.8.254.254',
+    '10.1.1.2': '8.8.254.254',  
 }
 
 def nat(pkt):
